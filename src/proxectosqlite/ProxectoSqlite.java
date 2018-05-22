@@ -5,6 +5,8 @@
  */
 package proxectosqlite;
 
+import Gui.Principal;
+
 /**
  *
  * @author jdominguezmartinan
@@ -20,7 +22,8 @@ public class ProxectoSqlite
         // TODO code application logic here
         Consultas obxConsultas=new Consultas();
         obxConsultas.connect();
-        obxConsultas.close();
+        obxConsultas.crearTabla();
+        Principal ventana=new Principal();
         
     }
     

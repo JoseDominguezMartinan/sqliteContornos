@@ -16,8 +16,17 @@ import java.util.logging.Logger;
  */
 public class Consultas
 {
-    String url = "/home/local/DANIELCASTELAO/jdominguezmartinan/NetBeansProjects/proxectoSqlite/test.db"; // ruta donde va a estar almacenada la base de datos 
+    String url = "/home/local/DANIELCASTELAO/jdominguezmartinan/NetBeansProjects/proxectoSqlite/coches.db"; // ruta donde va a estar almacenada la base de datos 
     Connection connect; // comando para conectar con la base de datos 
+    
+    public void crearTabla(){
+     try {
+            PreparedStatement st=connect.prepareStatement("create table if not exists coches(id integer primary key autoincrement, modelo varchar(40),marca varchar(40),motor varchar(40))");
+            st.execute();
+        } catch (SQLException ex) { // en caso de erro salta a excepcion 
+            System.out.println("No se pudo crear la tabla "+ex.getMessage());
+        }
+ }
     
     public void connect(){ // metodo para conectarse a la base de datos
        try { // lanzamos una excepcion en caso de no poder conectarse a la base de datos 
@@ -38,6 +47,33 @@ public class Consultas
         }
   
     }
+  /**
+  * metodo para crear un obxeto de tipo Coches
+  * @param marca marca do coche a crear 
+  * @param modelo mdoelo do coche a crear 
+  * @param motor motor do coche a crear 
+  * @return coche con todos os datos 
+  */
+  public Coches crearCoche(String marca,String modelo,String motor){
+     Coches coche=new Coches(marca,modelo,motor);
+     return coche;
+ }
+ /**
+  * metodo para insertar un coche novo na base de datos , hai que primeiro executar o metodo connect para que se conecte a base de datos 
+  * @param coche obxeto de tipo coches que queremos insertar na base de datos 
+  */
+
+ public void insertarCoches(Coches coche){
+     try {
+            PreparedStatement st = connect.prepareStatement("insert into coches (marca, modelo, motor) values (?,?,?)"); // prepara unha sentenza na cal o que esta entre parentesis vai ser sustituido
+            st.setString(1, coche.getMarca()); // sustituimos cada un dos valores polo que nos interesa 
+            st.setString(2, coche.getModelo());
+            st.setString(3, coche.getMotor());
+            st.execute();
+        } catch (SQLException ex) { // en caso de erro salta a excepcion 
+            System.out.println("No se pudo insertar el vehiculo"+ex.getMessage());
+        }
+ }
     
     
 }
