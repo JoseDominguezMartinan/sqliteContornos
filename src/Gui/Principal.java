@@ -33,12 +33,14 @@ public class Principal extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         bInsertar = new javax.swing.JButton();
+        bBuscar = new javax.swing.JButton();
+        bBorrar = new javax.swing.JButton();
+        bActualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,11 +49,35 @@ public class Principal extends javax.swing.JFrame
         jLabel1.setText("WWW.MISCOCHES.COM");
 
         bInsertar.setText("Insertar coches");
-        bInsertar.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        bInsertar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bInsertarMouseClicked(evt);
+            }
+        });
+
+        bBuscar.setText("Buscar coches");
+        bBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bBuscarMouseClicked(evt);
+            }
+        });
+
+        bBorrar.setText("Borrar coches");
+        bBorrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bBorrarMouseClicked(evt);
+            }
+        });
+        bBorrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                bBorrarKeyPressed(evt);
+            }
+        });
+
+        bActualizar.setText("Actualizar coches");
+        bActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bActualizarMouseClicked(evt);
             }
         });
 
@@ -60,29 +86,39 @@ public class Principal extends javax.swing.JFrame
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(105, Short.MAX_VALUE)
+                .addContainerGap(154, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(bInsertar))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(103, 103, 103))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(bInsertar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bBorrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1))
+                .addGap(145, 145, 145))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(29, 29, 29)
                 .addComponent(bInsertar)
-                .addContainerGap(226, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(bBuscar)
+                .addGap(18, 18, 18)
+                .addComponent(bBorrar)
+                .addGap(18, 18, 18)
+                .addComponent(bActualizar)
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,6 +135,31 @@ public class Principal extends javax.swing.JFrame
         insertar.setVisible(true);
         dispose();
     }//GEN-LAST:event_bInsertarMouseClicked
+
+    private void bBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBuscarMouseClicked
+        // TODO add your handling code here:
+         BuscarCoches buscar=new BuscarCoches();
+        buscar.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_bBuscarMouseClicked
+
+    private void bBorrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bBorrarKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bBorrarKeyPressed
+
+    private void bBorrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBorrarMouseClicked
+        // TODO add your handling code here:
+        BorrarCoches borrar=new BorrarCoches();
+        borrar.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_bBorrarMouseClicked
+
+    private void bActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bActualizarMouseClicked
+        // TODO add your handling code here:
+        ActualizarCoches actualizar=new ActualizarCoches();
+        actualizar.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_bActualizarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -146,6 +207,9 @@ public class Principal extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bActualizar;
+    private javax.swing.JButton bBorrar;
+    private javax.swing.JButton bBuscar;
     private javax.swing.JButton bInsertar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

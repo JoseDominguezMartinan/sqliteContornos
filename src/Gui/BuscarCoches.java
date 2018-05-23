@@ -11,17 +11,17 @@ import proxectosqlite.Consultas;
 
 /**
  *
- * @author jdominguezmartinan
+ * @author jose
  */
-public class InsertarCoches extends javax.swing.JFrame {
+public class BuscarCoches extends javax.swing.JFrame {
 
     /**
-     * Creates new form InsertarCoches
+     * Creates new form buscarCoches
      */
     Consultas obxConsultas = new Consultas();
     DefaultTableModel tabla = new DefaultTableModel();
 
-    public InsertarCoches() {
+    public BuscarCoches() {
         initComponents();
         setLocationRelativeTo(null);
         setVisible(false);
@@ -30,8 +30,6 @@ public class InsertarCoches extends javax.swing.JFrame {
         tabla.addColumn("Marca");
         tabla.addColumn("Modelo");
         tabla.addColumn("Motor");
-        obxConsultas.insertarTodosLista();
-        mostrarTabla();
     }
 
     /**
@@ -45,15 +43,16 @@ public class InsertarCoches extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        insertarMarca = new javax.swing.JTextField();
+        buscarMarca = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        insertarModelo = new javax.swing.JTextField();
+        buscarModelo = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        insertarMotor = new javax.swing.JTextField();
-        bOk = new javax.swing.JButton();
-        bLimpar = new javax.swing.JButton();
+        buscarId = new javax.swing.JTextField();
         bVolver = new javax.swing.JButton();
+        bBuscarModelo = new javax.swing.JButton();
+        bBuscarId = new javax.swing.JButton();
+        bBuscarMarca = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaPrincipal = new javax.swing.JTable();
 
@@ -61,37 +60,39 @@ public class InsertarCoches extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 255));
 
-        jLabel1.setText("Insertar datos del coche");
+        jLabel1.setText("Buscar coches ");
 
         jLabel2.setText("Marca");
 
         jLabel3.setText("Modelo");
 
-        jLabel4.setText("Motor");
-
-        bOk.setText("OK");
-        bOk.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bOkMouseClicked(evt);
-            }
-        });
-
-        bLimpar.setText("Limpiar");
-        bLimpar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bLimparMouseClicked(evt);
-            }
-        });
-        bLimpar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bLimparActionPerformed(evt);
-            }
-        });
+        jLabel4.setText("id");
 
         bVolver.setText("volver");
         bVolver.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bVolverMouseClicked(evt);
+            }
+        });
+
+        bBuscarModelo.setText("Buscar");
+        bBuscarModelo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bBuscarModeloMouseClicked(evt);
+            }
+        });
+
+        bBuscarId.setText("Buscar");
+        bBuscarId.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bBuscarIdMouseClicked(evt);
+            }
+        });
+
+        bBuscarMarca.setText("Buscar");
+        bBuscarMarca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bBuscarMarcaMouseClicked(evt);
             }
         });
 
@@ -112,62 +113,62 @@ public class InsertarCoches extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(bOk, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addComponent(bLimpar)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(insertarModelo, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(insertarMotor, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(44, 44, 44)
-                        .addComponent(insertarMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(buscarId, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .addComponent(buscarModelo)
+                            .addComponent(buscarMarca))
+                        .addGap(37, 37, 37)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(bBuscarModelo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                            .addComponent(bBuscarId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bBuscarMarca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addContainerGap(28, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bVolver)
-                .addGap(218, 218, 218))
+                .addComponent(bVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(200, 200, 200))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
                         .addComponent(jLabel1)
-                        .addGap(36, 36, 36)
+                        .addGap(26, 26, 26)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(insertarMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
+                            .addComponent(jLabel4)
+                            .addComponent(buscarId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bBuscarId))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(insertarModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(insertarMotor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addGap(32, 32, 32)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(bLimpar)
-                            .addComponent(bOk)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jLabel3)
+                            .addComponent(buscarModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bBuscarModelo))
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(buscarMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(bBuscarMarca)))))
+                .addGap(18, 18, 18)
                 .addComponent(bVolver)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -183,10 +184,7 @@ public class InsertarCoches extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-/**
-     * metodo para deixar en branco o contido da taboa
-     */
-    public void borrarTabla() {
+public void borrarTabla() {
         for (int i = 0; i < tabla.getRowCount(); i++) {
             tabla.removeRow(i);
             i -= 1;
@@ -214,33 +212,34 @@ public class InsertarCoches extends javax.swing.JFrame {
         this.tablaPrincipal.setModel(tabla);
 
     }
-    private void bLimparMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_bLimparMouseClicked
-    {//GEN-HEADEREND:event_bLimparMouseClicked
-        // TODO add your handling code here:
-        insertarMarca.setText("");
-        insertarModelo.setText("");
-        insertarMotor.setText("");
-    }//GEN-LAST:event_bLimparMouseClicked
-
-    private void bOkMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_bOkMouseClicked
-    {//GEN-HEADEREND:event_bOkMouseClicked
-        // TODO add your handling code here:
-        Coches coche = obxConsultas.crearCoche(insertarMarca.getText(), insertarModelo.getText(), insertarMotor.getText());
-        coche.save();
-        obxConsultas.insertarTodosLista();
-        mostrarTabla();
-    }//GEN-LAST:event_bOkMouseClicked
-
-    private void bLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLimparActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bLimparActionPerformed
-
     private void bVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bVolverMouseClicked
         // TODO add your handling code here:
-        Principal principal = new Principal();
+        Principal principal=new Principal();
         principal.setVisible(true);
         dispose();
     }//GEN-LAST:event_bVolverMouseClicked
+
+    private void bBuscarIdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBuscarIdMouseClicked
+        // TODO add your handling code here:
+        obxConsultas.buscarCoches(buscarId.getText());
+        mostrarTabla();
+        buscarId.setText("");
+        
+    }//GEN-LAST:event_bBuscarIdMouseClicked
+
+    private void bBuscarModeloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBuscarModeloMouseClicked
+        // TODO add your handling code here:
+         obxConsultas.buscarCoches(buscarModelo.getText());
+        mostrarTabla();
+        buscarModelo.setText("");
+    }//GEN-LAST:event_bBuscarModeloMouseClicked
+
+    private void bBuscarMarcaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBuscarMarcaMouseClicked
+        // TODO add your handling code here:
+        obxConsultas.buscarCoches(buscarMarca.getText());
+        mostrarTabla();
+        buscarMarca.setText("");
+    }//GEN-LAST:event_bBuscarMarcaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -259,31 +258,33 @@ public class InsertarCoches extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InsertarCoches.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BuscarCoches.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InsertarCoches.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BuscarCoches.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InsertarCoches.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BuscarCoches.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InsertarCoches.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BuscarCoches.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InsertarCoches().setVisible(true);
+                new BuscarCoches().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bLimpar;
-    private javax.swing.JButton bOk;
+    private javax.swing.JButton bBuscarId;
+    private javax.swing.JButton bBuscarMarca;
+    private javax.swing.JButton bBuscarModelo;
     private javax.swing.JButton bVolver;
-    private javax.swing.JTextField insertarMarca;
-    private javax.swing.JTextField insertarModelo;
-    private javax.swing.JTextField insertarMotor;
+    private javax.swing.JTextField buscarId;
+    private javax.swing.JTextField buscarMarca;
+    private javax.swing.JTextField buscarModelo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -6,26 +6,50 @@
 package proxectosqlite;
 
 /**
- *
+ * taller multimarca que vende coches de exposicion, os cales non estan matriculados, ordenados por un identificador id, e que van a ser tratados nunha base de datos sqlite
  * @author jdominguezmartinan
  */
 public class Coches
 {
-    private int id;
-    private String marca;
-    private String modelo;
-    private String motor;
-
+    private int id; //id do vehiculo autonumerico que se engadira conforme se engada na taboa da base de datos
+    private String marca; // marca do modelo do vehiculo
+    private String modelo; // modelo do vehiculo
+    private String motor; // motor do vehiculo
+/**
+ * constructor por defecto
+ */
     public Coches()
     {
     }
-
+/**
+ * constructor con todos os parametros menos o id, a hora de insertar os coches na taboa o id xenerase solo por iso necesitamos un constructor asi 
+ * @param marca
+ * @param modelo
+ * @param motor 
+ */
     public Coches(String marca,String modelo,String motor)
     {
         this.marca = marca;
         this.modelo = modelo;
         this.motor = motor;
     }
+/**
+ * constructor con todos os parametros, para poder insertar vehiculos existentes nunha lista de vehiculos e despois tratar esos datos 
+ * @param id
+ * @param marca
+ * @param modelo
+ * @param motor 
+ */
+    public Coches(int id, String marca, String modelo, String motor) {
+        this.id = id;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.motor = motor;
+    }
+    /**
+     * metodos de acceso e toString 
+     * 
+     */
 
     public int getId()
     {
@@ -76,7 +100,7 @@ public class Coches
    
     
     /**
-     * metodo para almacenar un coche en la base de datos 
+     * metodo para almacenar un obxeto de tipo coche na base de datos, sera chamado co coche en cuestion que queremos almacenar 
      */
     public void save(){
         Consultas con = new Consultas();
