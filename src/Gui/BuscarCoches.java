@@ -214,7 +214,7 @@ public void borrarTabla() {
     }
     private void bVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bVolverMouseClicked
         // TODO add your handling code here:
-        Principal principal=new Principal();
+        Principal principal = new Principal();
         principal.setVisible(true);
         dispose();
     }//GEN-LAST:event_bVolverMouseClicked
@@ -224,12 +224,12 @@ public void borrarTabla() {
         obxConsultas.buscarCoches(buscarId.getText());
         mostrarTabla();
         buscarId.setText("");
-        
+
     }//GEN-LAST:event_bBuscarIdMouseClicked
 
     private void bBuscarModeloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBuscarModeloMouseClicked
         // TODO add your handling code here:
-         obxConsultas.buscarCoches(buscarModelo.getText());
+        obxConsultas.buscarCoches(buscarModelo.getText());
         mostrarTabla();
         buscarModelo.setText("");
     }//GEN-LAST:event_bBuscarModeloMouseClicked

@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  */
 public class Consultas {
 
-    private String url = "C:\\Users\\jose\\Documents\\NetBeansProjects\\proxectoSql\\coches.db"; // ruta donde va a estar almacenada la base de datos , en caso de no existir la crea
+    private String url = "coches.db"; // ruta donde va a estar almacenada la base de datos , en caso de no existir la crea
     private Connection connect; // objeto de tipo connection, proporciona metodos para manexar a base de datos
     private PreparedStatement st; // objeto de tipo PreparedStatement, usado para enviar sentenzas sql a base de datos 
     public ArrayList<Coches> cochesNuevos = new ArrayList(); // este array sera empregado para almacenar os coches a hora de buscalos e asi poder visualizalos mellor na taboa da interfaz grafica 
@@ -29,7 +29,6 @@ public class Consultas {
      * NetBeans o que fixen foi crear este mmetodo que crea a tabla en caso de
      * que non exista
      */
-
     public void crearTabla() {
         try {
             st = connect.prepareStatement("create table if not exists coches(id integer primary key autoincrement, modelo varchar(40),marca varchar(40),motor varchar(40))"); // enviamos a sentenza na cal se di que se cree a taboa en caso de non existir
@@ -42,7 +41,6 @@ public class Consultas {
     /**
      * metodo para conectase a base de datos
      */
-
     public void connect() {
         try { // lanzamos una excepcion en caso de non poder conectarse a  base de datos 
             connect = DriverManager.getConnection("jdbc:sqlite:" + url); // co obxeto Connection realizamos a conexion enviando a url da base de datos a que nos imos conectar 
@@ -57,7 +55,6 @@ public class Consultas {
     /**
      * metodo para cerrar a conexion coa base de datos
      */
-
     public void close() {
         try {
             connect.close(); // cerramos a conexion 
@@ -144,34 +141,38 @@ public class Consultas {
         close();
 
     }
+
     /**
-     * metodo para borrar un coche determinado 
-     * @param coche obxeto coche que queremos borrar da lista 
+     * metodo para borrar un coche determinado
+     *
+     * @param coche obxeto coche que queremos borrar da lista
      */
 
     public void borrarCoches(Coches coche) {
         connect(); // conectamonos como en cada operacion a base de datos 
         try {
-            st = connect.prepareStatement("delete from coches where id='" + coche.getId()+ "'");// enviamos a sentenza sql a base de datos 
-           st.executeUpdate();
+            st = connect.prepareStatement("delete from coches where id='" + coche.getId() + "'");// enviamos a sentenza sql a base de datos 
+            st.executeUpdate();
         } catch (SQLException ex) { // en caso de erro capturamos a excepcion co seguinte mensaxe de erro
             System.out.println("Error ao eliminar ao vehiculo, intenteo de novo ");
         }
         close(); // cerramos a conexion coa base de datos como en cada operacion 
     }
+
     /**
-     * metodo para actualizar os datos dun coche en concreto 
-     * @param cocheUpdate obxeto que vamos a actualizar os datos 
+     * metodo para actualizar os datos dun coche en concreto
+     *
+     * @param cocheUpdate obxeto que vamos a actualizar os datos
      */
- public void actualizarCoche(Coches cocheUpdate){
+    public void actualizarCoche(Coches cocheUpdate) {
         connect(); // realizamos a conexion coa base de datos 
-        try{  
-            st=connect.prepareStatement("update coches set id="+"'"+cocheUpdate.getId()+"'"+", marca="+"'"+cocheUpdate.getMarca()+"'"+", motor="+"'"+cocheUpdate.getMotor()+"'"+", modelo="+"'"+cocheUpdate.getModelo()+"'"+" where id="+"'"+cocheUpdate.getId()+"'"+";"); // enviamos a sentenza sql para facer o update
+        try {
+            st = connect.prepareStatement("update coches set id=" + "'" + cocheUpdate.getId() + "'" + ", marca=" + "'" + cocheUpdate.getMarca() + "'" + ", motor=" + "'" + cocheUpdate.getMotor() + "'" + ", modelo=" + "'" + cocheUpdate.getModelo() + "'" + " where id=" + "'" + cocheUpdate.getId() + "'" + ";"); // enviamos a sentenza sql para facer o update
             st.executeUpdate(); // executamos a actualizacion 
-    }catch(SQLException ex){ // en caso de erro lanzamos una mensaxe de error 
-            JOptionPane.showMessageDialog(null,"Error al actualizar la tabla");
+        } catch (SQLException ex) { // en caso de erro lanzamos una mensaxe de error 
+            JOptionPane.showMessageDialog(null, "Error al actualizar la tabla");
         }
-       
+
         close(); // desconectamonos da base de datos 
 
     }

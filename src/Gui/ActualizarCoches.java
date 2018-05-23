@@ -20,6 +20,7 @@ public class ActualizarCoches extends javax.swing.JFrame {
      */
     Consultas obxConsultas = new Consultas();
     DefaultTableModel tabla = new DefaultTableModel();
+
     public ActualizarCoches() {
         initComponents();
         setLocationRelativeTo(null);
@@ -164,7 +165,7 @@ public void borrarTabla() {
     }
     private void bVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bVolverMouseClicked
         // TODO add your handling code here:
-        Principal principal=new Principal();
+        Principal principal = new Principal();
         principal.setVisible(true);
         dispose();
     }//GEN-LAST:event_bVolverMouseClicked
@@ -172,9 +173,9 @@ public void borrarTabla() {
     private void bActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bActualizarMouseClicked
         // TODO add your handling code here:
         obxConsultas.connect();
-        int fila=tablaPrincipal.getSelectedRow();
-        if(fila>=0){
-            Coches coche=new Coches(Integer.parseInt(String.valueOf(tablaPrincipal.getValueAt(fila,0))),String.valueOf(tablaPrincipal.getValueAt(fila,1)),String.valueOf(tablaPrincipal.getValueAt(fila,2)),String.valueOf(tablaPrincipal.getValueAt(fila,3))); // creamos un objeto coches con los nuevos datos actualizdos , o campo id esta marcado na taboa como non editable
+        int fila = tablaPrincipal.getSelectedRow();
+        if (fila >= 0) {
+            Coches coche = new Coches(Integer.parseInt(String.valueOf(tablaPrincipal.getValueAt(fila, 0))), String.valueOf(tablaPrincipal.getValueAt(fila, 1)), String.valueOf(tablaPrincipal.getValueAt(fila, 2)), String.valueOf(tablaPrincipal.getValueAt(fila, 3))); // creamos un objeto coches con los nuevos datos actualizdos , o campo id esta marcado na taboa como non editable
             obxConsultas.actualizarCoche(coche); // chamamos ao metodo actualizar cos datos novos e actualizamos o rexistro 
             obxConsultas.insertarTodosLista(); // actualizamos o array 
             mostrarTabla(); // mostramos a taboa 

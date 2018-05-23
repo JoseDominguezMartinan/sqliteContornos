@@ -20,6 +20,7 @@ public class BorrarCoches extends javax.swing.JFrame {
      */
     Consultas obxConsultas = new Consultas();
     DefaultTableModel tabla = new DefaultTableModel();
+
     public BorrarCoches() {
         initComponents();
         setLocationRelativeTo(null);
@@ -156,16 +157,16 @@ public void borrarTabla() {
     }
     private void bVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bVolverMouseClicked
         // TODO add your handling code here:
-        Principal principal=new Principal();
+        Principal principal = new Principal();
         principal.setVisible(true);
         dispose();
     }//GEN-LAST:event_bVolverMouseClicked
 
     private void bBorrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBorrarMouseClicked
         // TODO add your handling code here:
-        int fila=tablaPrincipal.getSelectedRow();
-        if(fila>=0){
-            Coches coche=obxConsultas.cochesNuevos.get(fila);
+        int fila = tablaPrincipal.getSelectedRow();
+        if (fila >= 0) {
+            Coches coche = obxConsultas.cochesNuevos.get(fila);
             obxConsultas.borrarCoches(coche);
             obxConsultas.insertarTodosLista();
             mostrarTabla();

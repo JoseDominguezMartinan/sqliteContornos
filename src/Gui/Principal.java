@@ -11,15 +11,14 @@ import proxectosqlite.Consultas;
  *
  * @author jdominguezmartinan
  */
-public class Principal extends javax.swing.JFrame
-{
-    Consultas obxConsultas=new Consultas();
+public class Principal extends javax.swing.JFrame {
+
+    Consultas obxConsultas = new Consultas();
 
     /**
      * Creates new form Principal
      */
-    public Principal()
-    {
+    public Principal() {
         initComponents();
         setLocationRelativeTo(null);
         setVisible(true);
@@ -131,14 +130,14 @@ public class Principal extends javax.swing.JFrame
     private void bInsertarMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_bInsertarMouseClicked
     {//GEN-HEADEREND:event_bInsertarMouseClicked
         // TODO add your handling code here:
-        InsertarCoches insertar=new InsertarCoches();
+        InsertarCoches insertar = new InsertarCoches();
         insertar.setVisible(true);
         dispose();
     }//GEN-LAST:event_bInsertarMouseClicked
 
     private void bBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBuscarMouseClicked
         // TODO add your handling code here:
-         BuscarCoches buscar=new BuscarCoches();
+        BuscarCoches buscar = new BuscarCoches();
         buscar.setVisible(true);
         dispose();
     }//GEN-LAST:event_bBuscarMouseClicked
@@ -149,14 +148,14 @@ public class Principal extends javax.swing.JFrame
 
     private void bBorrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBorrarMouseClicked
         // TODO add your handling code here:
-        BorrarCoches borrar=new BorrarCoches();
+        BorrarCoches borrar = new BorrarCoches();
         borrar.setVisible(true);
         dispose();
     }//GEN-LAST:event_bBorrarMouseClicked
 
     private void bActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bActualizarMouseClicked
         // TODO add your handling code here:
-        ActualizarCoches actualizar=new ActualizarCoches();
+        ActualizarCoches actualizar = new ActualizarCoches();
         actualizar.setVisible(true);
         dispose();
     }//GEN-LAST:event_bActualizarMouseClicked
@@ -164,43 +163,33 @@ public class Principal extends javax.swing.JFrame
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[])
-    {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try
-        {
-            for(javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
-            {
-                if("Nimbus".equals(info.getName()))
-                {
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch(ClassNotFoundException ex)
-        {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE,null,ex);
-        } catch(InstantiationException ex)
-        {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE,null,ex);
-        } catch(IllegalAccessException ex)
-        {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE,null,ex);
-        } catch(javax.swing.UnsupportedLookAndFeelException ex)
-        {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE,null,ex);
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable()
-        {
-            public void run()
-            {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
                 new Principal().setVisible(true);
             }
         });
