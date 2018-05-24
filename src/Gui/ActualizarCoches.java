@@ -175,7 +175,7 @@ public void borrarTabla() {
         obxConsultas.connect();
         int fila = tablaPrincipal.getSelectedRow();
         if (fila >= 0) {
-            Coches coche = new Coches(Integer.parseInt(String.valueOf(tablaPrincipal.getValueAt(fila, 0))), String.valueOf(tablaPrincipal.getValueAt(fila, 1)), String.valueOf(tablaPrincipal.getValueAt(fila, 2)), String.valueOf(tablaPrincipal.getValueAt(fila, 3))); // creamos un objeto coches con los nuevos datos actualizdos , o campo id esta marcado na taboa como non editable
+            Coches coche = new Coches(Integer.parseInt(String.valueOf(tablaPrincipal.getValueAt(fila, 0)).toUpperCase()), String.valueOf(tablaPrincipal.getValueAt(fila, 1)).toUpperCase(), String.valueOf(tablaPrincipal.getValueAt(fila, 2)).toUpperCase(), String.valueOf(tablaPrincipal.getValueAt(fila, 3)).toUpperCase()); // creamos un objeto coches con los nuevos datos actualizdos , o campo id esta marcado na taboa como non editable
             obxConsultas.actualizarCoche(coche); // chamamos ao metodo actualizar cos datos novos e actualizamos o rexistro 
             obxConsultas.insertarTodosLista(); // actualizamos o array 
             mostrarTabla(); // mostramos a taboa 
