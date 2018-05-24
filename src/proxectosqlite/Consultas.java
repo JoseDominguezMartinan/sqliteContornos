@@ -13,11 +13,11 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author jdominguezmartinan
+ * @author jdominguezmartinan 
  */
 public class Consultas {
 
-    private String url = "coches.db"; // ruta donde va a estar almacenada la base de datos , en caso de no existir la crea
+    private String url = "/home/local/DANIELCASTELAO/jdominguezmartinan/NetBeansProjects/proxectoSql/coches.db"; // ruta donde va a estar almacenada la base de datos , en caso de no existir la crea
     private Connection connect; // objeto de tipo connection, proporciona metodos para manexar a base de datos
     private PreparedStatement st; // objeto de tipo PreparedStatement, usado para enviar sentenzas sql a base de datos 
     public ArrayList<Coches> cochesNuevos = new ArrayList(); // este array sera empregado para almacenar os coches a hora de buscalos e asi poder visualizalos mellor na taboa da interfaz grafica 
@@ -88,9 +88,9 @@ public class Consultas {
     public void insertarCoches(Coches coche) {
         try {
             st = connect.prepareStatement("insert into coches (marca, modelo, motor) values (?,?,?)"); // prepara unha sentenza na cal o que esta entre parentesis vai ser sustituido
-            st.setString(1, coche.getMarca()); // sustituimos cada un dos valores polo que nos interesa 
-            st.setString(2, coche.getModelo());
-            st.setString(3, coche.getMotor());
+            st.setString(1, coche.getMarca().toUpperCase()); // sustituimos cada un dos valores polo que nos interesa , ponemos la primera letra en mayuscula
+            st.setString(2, coche.getModelo().toUpperCase());
+            st.setString(3, coche.getMotor().toUpperCase());
             st.execute();
         } catch (SQLException ex) { // en caso de erro salta a excepcion 
             System.out.println("No se pudo insertar el vehiculo" + ex.getMessage());

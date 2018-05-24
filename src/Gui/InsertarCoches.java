@@ -229,6 +229,9 @@ public class InsertarCoches extends javax.swing.JFrame {
         coche.save();
         obxConsultas.insertarTodosLista();
         mostrarTabla();
+        insertarMarca.setText("");
+        insertarModelo.setText("");
+        insertarMotor.setText("");
     }//GEN-LAST:event_bOkMouseClicked
 
     private void bLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLimparActionPerformed
