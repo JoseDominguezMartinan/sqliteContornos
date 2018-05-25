@@ -8,6 +8,7 @@ package Gui;
 import javax.swing.table.DefaultTableModel;
 import proxectosqlite.Coches;
 import proxectosqlite.Consultas;
+import proxectosqlite.Controlador;
 
 /**
  *
@@ -26,12 +27,9 @@ public class BorrarCoches extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setVisible(false);
         setResizable(false);
-        tabla.addColumn("ID");
-        tabla.addColumn("Marca");
-        tabla.addColumn("Modelo");
-        tabla.addColumn("Motor");
         obxConsultas.insertarTodosLista();
-        mostrarTabla();
+        tabla=Controlador.mostrarTabla();
+        tablaPrincipal.setModel(tabla);
     }
 
     /**
@@ -127,34 +125,7 @@ public class BorrarCoches extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-public void borrarTabla() {
-        for (int i = 0; i < tabla.getRowCount(); i++) {
-            tabla.removeRow(i);
-            i -= 1;
-        }
-        tablaPrincipal.setModel(tabla);
 
-    }
-
-    public void mostrarTabla() {
-
-        borrarTabla();
-
-        for (Coches elemento : obxConsultas.cochesNuevos) {
-
-            String engadirCoche[] = new String[4];
-            engadirCoche[0] = String.valueOf(elemento.getId());
-            engadirCoche[1] = elemento.getMarca();
-            engadirCoche[2] = elemento.getModelo();
-            engadirCoche[3] = elemento.getMotor();
-
-            tabla.addRow(engadirCoche);
-
-        }
-
-        this.tablaPrincipal.setModel(tabla);
-
-    }
     private void bVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bVolverMouseClicked
         // TODO add your handling code here:
         Principal principal = new Principal();
@@ -169,7 +140,8 @@ public void borrarTabla() {
             Coches coche = obxConsultas.cochesNuevos.get(fila);
             obxConsultas.borrarCoches(coche);
             obxConsultas.insertarTodosLista();
-            mostrarTabla();
+            tabla=Controlador.mostrarTabla();
+            tablaPrincipal.setModel(tabla);
         }
     }//GEN-LAST:event_bBorrarMouseClicked
 

@@ -6,8 +6,8 @@
 package Gui;
 
 import javax.swing.table.DefaultTableModel;
-import proxectosqlite.Coches;
 import proxectosqlite.Consultas;
+import proxectosqlite.Controlador;
 
 /**
  *
@@ -19,17 +19,13 @@ public class BuscarCoches extends javax.swing.JFrame {
      * Creates new form buscarCoches
      */
     Consultas obxConsultas = new Consultas();
-    DefaultTableModel tabla = new DefaultTableModel();
+    DefaultTableModel tabla;
 
     public BuscarCoches() {
         initComponents();
         setLocationRelativeTo(null);
         setVisible(false);
         setResizable(false);
-        tabla.addColumn("ID");
-        tabla.addColumn("Marca");
-        tabla.addColumn("Modelo");
-        tabla.addColumn("Motor");
     }
 
     /**
@@ -184,34 +180,7 @@ public class BuscarCoches extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-public void borrarTabla() {
-        for (int i = 0; i < tabla.getRowCount(); i++) {
-            tabla.removeRow(i);
-            i -= 1;
-        }
-        tablaPrincipal.setModel(tabla);
 
-    }
-
-    public void mostrarTabla() {
-
-        borrarTabla();
-
-        for (Coches elemento : obxConsultas.cochesNuevos) {
-
-            String engadirCoche[] = new String[4];
-            engadirCoche[0] = String.valueOf(elemento.getId());
-            engadirCoche[1] = elemento.getMarca();
-            engadirCoche[2] = elemento.getModelo();
-            engadirCoche[3] = elemento.getMotor();
-
-            tabla.addRow(engadirCoche);
-
-        }
-
-        this.tablaPrincipal.setModel(tabla);
-
-    }
     private void bVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bVolverMouseClicked
         // TODO add your handling code here:
         Principal principal = new Principal();
@@ -222,7 +191,8 @@ public void borrarTabla() {
     private void bBuscarIdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBuscarIdMouseClicked
         // TODO add your handling code here:
         obxConsultas.buscarCoches(buscarId.getText());
-        mostrarTabla();
+        tabla=Controlador.mostrarTabla();
+        tablaPrincipal.setModel(tabla);
         buscarId.setText("");
 
     }//GEN-LAST:event_bBuscarIdMouseClicked
@@ -230,14 +200,16 @@ public void borrarTabla() {
     private void bBuscarModeloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBuscarModeloMouseClicked
         // TODO add your handling code here:
         obxConsultas.buscarCoches(buscarModelo.getText());
-        mostrarTabla();
+        tabla=Controlador.mostrarTabla();
+        tablaPrincipal.setModel(tabla);
         buscarModelo.setText("");
     }//GEN-LAST:event_bBuscarModeloMouseClicked
 
     private void bBuscarMarcaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBuscarMarcaMouseClicked
         // TODO add your handling code here:
         obxConsultas.buscarCoches(buscarMarca.getText());
-        mostrarTabla();
+        tabla=Controlador.mostrarTabla();
+        tablaPrincipal.setModel(tabla);
         buscarMarca.setText("");
     }//GEN-LAST:event_bBuscarMarcaMouseClicked
 

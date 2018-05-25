@@ -8,6 +8,7 @@ package Gui;
 import javax.swing.table.DefaultTableModel;
 import proxectosqlite.Coches;
 import proxectosqlite.Consultas;
+import proxectosqlite.Controlador;
 
 /**
  *
@@ -19,19 +20,16 @@ public class ActualizarCoches extends javax.swing.JFrame {
      * Creates new form BorrarCoches
      */
     Consultas obxConsultas = new Consultas();
-    DefaultTableModel tabla = new DefaultTableModel();
+    DefaultTableModel tabla;
 
     public ActualizarCoches() {
         initComponents();
         setLocationRelativeTo(null);
         setVisible(false);
         setResizable(false);
-        tabla.addColumn("ID");
-        tabla.addColumn("Marca");
-        tabla.addColumn("Modelo");
-        tabla.addColumn("Motor");
         obxConsultas.insertarTodosLista();
-        mostrarTabla();
+        tabla=Controlador.mostrarTabla();
+        tablaPrincipal.setModel(tabla);
     }
 
     /**
@@ -135,34 +133,9 @@ public class ActualizarCoches extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-public void borrarTabla() {
-        for (int i = 0; i < tabla.getRowCount(); i++) {
-            tabla.removeRow(i);
-            i -= 1;
-        }
-        tablaPrincipal.setModel(tabla);
 
-    }
 
-    public void mostrarTabla() {
-
-        borrarTabla();
-
-        for (Coches elemento : obxConsultas.cochesNuevos) {
-
-            String engadirCoche[] = new String[4];
-            engadirCoche[0] = String.valueOf(elemento.getId());
-            engadirCoche[1] = elemento.getMarca();
-            engadirCoche[2] = elemento.getModelo();
-            engadirCoche[3] = elemento.getMotor();
-
-            tabla.addRow(engadirCoche);
-
-        }
-
-        this.tablaPrincipal.setModel(tabla);
-
-    }
+    
     private void bVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bVolverMouseClicked
         // TODO add your handling code here:
         Principal principal = new Principal();
@@ -178,7 +151,8 @@ public void borrarTabla() {
             Coches coche = new Coches(Integer.parseInt(String.valueOf(tablaPrincipal.getValueAt(fila, 0)).toUpperCase()), String.valueOf(tablaPrincipal.getValueAt(fila, 1)).toUpperCase(), String.valueOf(tablaPrincipal.getValueAt(fila, 2)).toUpperCase(), String.valueOf(tablaPrincipal.getValueAt(fila, 3)).toUpperCase()); // creamos un objeto coches con los nuevos datos actualizdos , o campo id esta marcado na taboa como non editable
             obxConsultas.actualizarCoche(coche); // chamamos ao metodo actualizar cos datos novos e actualizamos o rexistro 
             obxConsultas.insertarTodosLista(); // actualizamos o array 
-            mostrarTabla(); // mostramos a taboa 
+            tabla=Controlador.mostrarTabla(); // mostramos a taboa 
+            tablaPrincipal.setModel(tabla);
         }
         obxConsultas.close();
     }//GEN-LAST:event_bActualizarMouseClicked

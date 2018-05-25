@@ -8,6 +8,7 @@ package Gui;
 import javax.swing.table.DefaultTableModel;
 import proxectosqlite.Coches;
 import proxectosqlite.Consultas;
+import proxectosqlite.Controlador;
 
 /**
  *
@@ -19,19 +20,16 @@ public class InsertarCoches extends javax.swing.JFrame {
      * Creates new form InsertarCoches
      */
     Consultas obxConsultas = new Consultas();
-    DefaultTableModel tabla = new DefaultTableModel();
+    DefaultTableModel tabla;
 
     public InsertarCoches() {
         initComponents();
         setLocationRelativeTo(null);
         setVisible(false);
         setResizable(false);
-        tabla.addColumn("ID");
-        tabla.addColumn("Marca");
-        tabla.addColumn("Modelo");
-        tabla.addColumn("Motor");
         obxConsultas.insertarTodosLista();
-        mostrarTabla();
+        tabla=Controlador.mostrarTabla();
+        tablaPrincipal.setModel(tabla);
     }
 
     /**
@@ -186,34 +184,6 @@ public class InsertarCoches extends javax.swing.JFrame {
 /**
      * metodo para deixar en branco o contido da taboa
      */
-    public void borrarTabla() {
-        for (int i = 0; i < tabla.getRowCount(); i++) {
-            tabla.removeRow(i);
-            i -= 1;
-        }
-        tablaPrincipal.setModel(tabla);
-
-    }
-
-    public void mostrarTabla() {
-
-        borrarTabla();
-
-        for (Coches elemento : obxConsultas.cochesNuevos) {
-
-            String engadirCoche[] = new String[4];
-            engadirCoche[0] = String.valueOf(elemento.getId());
-            engadirCoche[1] = elemento.getMarca();
-            engadirCoche[2] = elemento.getModelo();
-            engadirCoche[3] = elemento.getMotor();
-
-            tabla.addRow(engadirCoche);
-
-        }
-
-        this.tablaPrincipal.setModel(tabla);
-
-    }
     private void bLimparMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_bLimparMouseClicked
     {//GEN-HEADEREND:event_bLimparMouseClicked
         // TODO add your handling code here:
@@ -228,7 +198,8 @@ public class InsertarCoches extends javax.swing.JFrame {
         Coches coche = obxConsultas.crearCoche(insertarMarca.getText(), insertarModelo.getText(), insertarMotor.getText());
         coche.save();
         obxConsultas.insertarTodosLista();
-        mostrarTabla();
+        tabla=Controlador.mostrarTabla();
+        tablaPrincipal.setModel(tabla);
         insertarMarca.setText("");
         insertarModelo.setText("");
         insertarMotor.setText("");
