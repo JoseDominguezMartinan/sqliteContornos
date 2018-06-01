@@ -19,15 +19,15 @@ public class BorrarCoches extends javax.swing.JFrame {
     /**
      * Creates new form BorrarCoches
      */
-    Consultas obxConsultas = new Consultas();
     DefaultTableModel tabla = new DefaultTableModel();
+    
 
     public BorrarCoches() {
         initComponents();
         setLocationRelativeTo(null);
         setVisible(false);
         setResizable(false);
-        obxConsultas.insertarTodosLista();
+        Controlador.insertarLista();
         tabla=Controlador.mostrarTabla();
         tablaPrincipal.setModel(tabla);
     }
@@ -137,9 +137,9 @@ public class BorrarCoches extends javax.swing.JFrame {
         // TODO add your handling code here:
         int fila = tablaPrincipal.getSelectedRow();
         if (fila >= 0) {
-            Coches coche = obxConsultas.cochesNuevos.get(fila);
-            obxConsultas.borrarCoches(coche);
-            obxConsultas.insertarTodosLista();
+            Coches coche = Controlador.cochesNuevos.get(fila);
+            Controlador.borrar(coche);
+            Controlador.insertarLista();
             tabla=Controlador.mostrarTabla();
             tablaPrincipal.setModel(tabla);
         }

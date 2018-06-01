@@ -39,7 +39,8 @@ public class ActualizarCoches extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -55,36 +56,45 @@ public class ActualizarCoches extends javax.swing.JFrame {
         jLabel1.setText("Cambiar datos de un coche");
 
         bVolver.setText("volver");
-        bVolver.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        bVolver.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 bVolverMouseClicked(evt);
             }
         });
 
         tablaPrincipal.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null}
             },
-            new String [] {
+            new String []
+            {
                 "ID", "Marca", "Modelo", "Motor"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
+        )
+        {
+            boolean[] canEdit = new boolean []
+            {
                 false, true, true, true
             };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
                 return canEdit [columnIndex];
             }
         });
         jScrollPane1.setViewportView(tablaPrincipal);
 
         bActualizar.setText("Actualizar");
-        bActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        bActualizar.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 bActualizarMouseClicked(evt);
             }
         });
@@ -95,8 +105,8 @@ public class ActualizarCoches extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(65, 65, 65)
-                .addComponent(bActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(171, 171, 171)
+                .addComponent(bActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(155, 155, 155)
                 .addComponent(bVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -145,7 +155,7 @@ public class ActualizarCoches extends javax.swing.JFrame {
 
     private void bActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bActualizarMouseClicked
         // TODO add your handling code here:
-        obxConsultas.connect();
+   
         int fila = tablaPrincipal.getSelectedRow();
         if (fila >= 0) {
             Coches coche = new Coches(Integer.parseInt(String.valueOf(tablaPrincipal.getValueAt(fila, 0)).toUpperCase()), String.valueOf(tablaPrincipal.getValueAt(fila, 1)).toUpperCase(), String.valueOf(tablaPrincipal.getValueAt(fila, 2)).toUpperCase(), String.valueOf(tablaPrincipal.getValueAt(fila, 3)).toUpperCase()); // creamos un objeto coches con los nuevos datos actualizdos , o campo id esta marcado na taboa como non editable
@@ -154,7 +164,7 @@ public class ActualizarCoches extends javax.swing.JFrame {
             tabla=Controlador.mostrarTabla(); // mostramos a taboa 
             tablaPrincipal.setModel(tabla);
         }
-        obxConsultas.close();
+     
     }//GEN-LAST:event_bActualizarMouseClicked
 
     /**

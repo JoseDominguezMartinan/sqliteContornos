@@ -195,7 +195,7 @@ public class InsertarCoches extends javax.swing.JFrame {
     private void bOkMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_bOkMouseClicked
     {//GEN-HEADEREND:event_bOkMouseClicked
         // TODO add your handling code here:
-        Coches coche = obxConsultas.crearCoche(insertarMarca.getText(), insertarModelo.getText(), insertarMotor.getText());
+        Coches coche = new Coches(insertarMarca.getText(), insertarModelo.getText(), insertarMotor.getText());
         coche.save();
         obxConsultas.insertarTodosLista();
         tabla=Controlador.mostrarTabla();
