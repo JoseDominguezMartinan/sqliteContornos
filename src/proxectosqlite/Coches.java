@@ -97,15 +97,6 @@ public class Coches {
         return "Coches{" + "id=" + id + ", marca=" + marca + ", modelo=" + modelo + ", motor=" + motor + '}';
     }
 
-    /**
-     * metodo para almacenar un obxeto de tipo coche na base de datos, sera
-     * chamado co coche en cuestion que queremos almacenar
-     */
-    public void save() {
-        Consultas con = new Consultas();
-        con.connect();
-        con.insertarCoches(this);
-        con.close();
-    }
+    
 
 }

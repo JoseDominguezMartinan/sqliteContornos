@@ -5,9 +5,9 @@
  */
 package Gui;
 
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import proxectosqlite.Coches;
-import proxectosqlite.Consultas;
 import proxectosqlite.Controlador;
 
 /**
@@ -19,15 +19,17 @@ public class InsertarCoches extends javax.swing.JFrame {
     /**
      * Creates new form InsertarCoches
      */
-    Consultas obxConsultas = new Consultas();
+    
     DefaultTableModel tabla;
+     ArrayList<String>parametros=new ArrayList();
 
     public InsertarCoches() {
         initComponents();
         setLocationRelativeTo(null);
         setVisible(false);
         setResizable(false);
-        obxConsultas.insertarTodosLista();
+       
+        Controlador.insertarLista();
         tabla=Controlador.mostrarTabla();
         tablaPrincipal.setModel(tabla);
     }
@@ -115,23 +117,24 @@ public class InsertarCoches extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(bOk, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addComponent(bLimpar)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(insertarModelo, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(insertarMotor, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(44, 44, 44)
-                        .addComponent(insertarMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                            .addComponent(insertarMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(bOk, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(26, 26, 26)
+                                    .addComponent(bLimpar)
+                                    .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(insertarMotor, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addGap(0, 0, Short.MAX_VALUE)
+                                    .addComponent(insertarModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -195,9 +198,12 @@ public class InsertarCoches extends javax.swing.JFrame {
     private void bOkMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_bOkMouseClicked
     {//GEN-HEADEREND:event_bOkMouseClicked
         // TODO add your handling code here:
-        Coches coche = new Coches(insertarMarca.getText(), insertarModelo.getText(), insertarMotor.getText());
-        coche.save();
-        obxConsultas.insertarTodosLista();
+        
+        parametros.add(insertarMarca.getText());
+        parametros.add(insertarModelo.getText());
+        parametros.add(insertarMotor.getText());
+        Controlador.insertarCoche(parametros);
+        Controlador.insertarLista();
         tabla=Controlador.mostrarTabla();
         tablaPrincipal.setModel(tabla);
         insertarMarca.setText("");

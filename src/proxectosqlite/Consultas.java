@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 public class Consultas
 {
 
-    private String url = "/home/local/DANIELCASTELAO/jdominguezmartinan/NetBeansProjects/proxectoSql/coches.db"; // ruta donde va a estar almacenada la base de datos , en caso de no existir la crea
+    private final String url = "C:\\Users\\jose\\Documents\\NetBeansProjects\\sqliteContornos\\coches.db"; // ruta donde va a estar almacenada la base de datos , en caso de no existir la crea
     private Connection connect; // objeto de tipo connection, proporciona metodos para manexar a base de datos
     private PreparedStatement st; // objeto de tipo PreparedStatement, usado para enviar sentenzas sql a base de datos
     private ResultSet datos; // para traballar coa fila actual da taboa 
@@ -58,6 +58,7 @@ public class Consultas
             }
         } catch(SQLException ex)
         { // se non se pode conectar salta a excepcion 
+            JOptionPane.showMessageDialog(null, "No se ha podido conectar con la base de datos");
             System.err.println("No se ha podido conectar a la base de datos\n"+ex.getMessage());
         }
     }
@@ -108,6 +109,7 @@ public class Consultas
      *
      * @param parametroBusqueda string (ou int no caso do id) co valor do campo
      * co que buscamos
+     * @return datos result set con los datos de la busqueda 
      */
     public ResultSet buscarCoches(String parametroBusqueda)
     {
@@ -121,7 +123,7 @@ public class Consultas
         {
             JOptionPane.showMessageDialog(null,"error al buscar el coche, intentelo de nuevo"); // en caso de saltar a excepcion salta a mensaxe de erro
         }
-        close();
+     // no podemos cerrar aqui la conexion, llamaremos al metodo cerrar despues de llamar a este metodo 
         return datos;
 
     }
@@ -130,6 +132,7 @@ public class Consultas
      * metodo para que no array aparezan todos os coches que se atopan na base
      * de datos
      *
+     * @return datos result set con los datos de la busqueda
      */
     public ResultSet insertarTodosLista()
     {
@@ -192,4 +195,6 @@ public class Consultas
         close(); // desconectamonos da base de datos 
 
     }
+    
+            
 }

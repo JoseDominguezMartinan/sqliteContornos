@@ -5,9 +5,8 @@
  */
 package Gui;
 
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-import proxectosqlite.Coches;
-import proxectosqlite.Consultas;
 import proxectosqlite.Controlador;
 
 /**
@@ -19,15 +18,17 @@ public class ActualizarCoches extends javax.swing.JFrame {
     /**
      * Creates new form BorrarCoches
      */
-    Consultas obxConsultas = new Consultas();
+    
     DefaultTableModel tabla;
+    ArrayList <String> parametros=new ArrayList();
+    int id;
 
     public ActualizarCoches() {
         initComponents();
         setLocationRelativeTo(null);
         setVisible(false);
         setResizable(false);
-        obxConsultas.insertarTodosLista();
+        Controlador.insertarLista();
         tabla=Controlador.mostrarTabla();
         tablaPrincipal.setModel(tabla);
     }
@@ -158,9 +159,13 @@ public class ActualizarCoches extends javax.swing.JFrame {
    
         int fila = tablaPrincipal.getSelectedRow();
         if (fila >= 0) {
-            Coches coche = new Coches(Integer.parseInt(String.valueOf(tablaPrincipal.getValueAt(fila, 0)).toUpperCase()), String.valueOf(tablaPrincipal.getValueAt(fila, 1)).toUpperCase(), String.valueOf(tablaPrincipal.getValueAt(fila, 2)).toUpperCase(), String.valueOf(tablaPrincipal.getValueAt(fila, 3)).toUpperCase()); // creamos un objeto coches con los nuevos datos actualizdos , o campo id esta marcado na taboa como non editable
-            obxConsultas.actualizarCoche(coche); // chamamos ao metodo actualizar cos datos novos e actualizamos o rexistro 
-            obxConsultas.insertarTodosLista(); // actualizamos o array 
+            id=Integer.parseInt(String.valueOf(tablaPrincipal.getValueAt(fila,0)).toUpperCase());
+            parametros.add(String.valueOf(tablaPrincipal.getValueAt(fila, 1)).toUpperCase());
+            parametros.add(String.valueOf(tablaPrincipal.getValueAt(fila, 2)).toUpperCase());
+            parametros.add(String.valueOf(tablaPrincipal.getValueAt(fila, 3)).toUpperCase());           
+           
+            Controlador.modificarCoche(id, parametros);// chamamos ao metodo actualizar cos datos novos e actualizamos o rexistro 
+            Controlador.insertarLista(); // actualizamos o array 
             tabla=Controlador.mostrarTabla(); // mostramos a taboa 
             tablaPrincipal.setModel(tabla);
         }

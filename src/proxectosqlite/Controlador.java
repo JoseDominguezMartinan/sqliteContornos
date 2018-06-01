@@ -98,7 +98,7 @@ public class Controlador
             JOptionPane.showMessageDialog(null,"Error, no se ha podido realizar la operación");
         } else
         { // si se ha realizado con exito notifica de ello 
-            JOptionPane.showConfirmDialog(null,"Operación realizada con exito");
+            JOptionPane.showMessageDialog(null,"Entrada eliminada con exito");
         }
     }
 
@@ -122,5 +122,32 @@ public class Controlador
         
       
     }
+    public static void buscar(String parametroBusqueda){
+        datos=obxConsultas.buscarCoches(parametroBusqueda);
+        cochesNuevos.clear(); // limpiamos el array
+            try
+            {
+                while (datos.next()) // insertamos cada uno de los coches devueltos en el array que tenemos
+                {
+                    cochesNuevos.add(new Coches(datos.getInt("id"),datos.getString("marca").toUpperCase(),datos.getString("modelo").toUpperCase(),datos.getString("motor").toUpperCase()));
+                }
+            } catch(SQLException ex)
+            {
+                JOptionPane.showMessageDialog(null, "error al realizar la operación "+ex.getMessage() ); // en caso de erro lanzamos a excepcion
+            }
+           obxConsultas.close();
+    }
+    public static void insertarCoche(ArrayList parametros){
+        Coches coche=new Coches((String)parametros.get(0),(String)parametros.get(1),(String) parametros.get(2));
+        obxConsultas.insertarCoches(coche);
+    }
+    public static void modificarCoche(int id,ArrayList parametros){
+        Coches coche=new Coches(id,(String)parametros.get(0),(String)parametros.get(1),(String)parametros.get(2));
+        obxConsultas.actualizarCoche(coche);
+    }
+           
+           
+           
+           
 
 }
