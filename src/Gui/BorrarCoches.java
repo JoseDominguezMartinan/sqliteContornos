@@ -125,14 +125,20 @@ public class BorrarCoches extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * boton para volver a la ventana principal de la aplicacion
+ * @param evt 
+ */
     private void bVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bVolverMouseClicked
         // TODO add your handling code here:
         Principal principal = new Principal();
         principal.setVisible(true);
         dispose();
     }//GEN-LAST:event_bVolverMouseClicked
-
+/**
+ * metodo que envia los datos del coche marcado al controlador para su borrado y refresca la ventana de la interfaz
+ * @param evt 
+ */
     private void bBorrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBorrarMouseClicked
         // TODO add your handling code here:
         int fila = tablaPrincipal.getSelectedRow();

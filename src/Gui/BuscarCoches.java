@@ -18,7 +18,7 @@ public class BuscarCoches extends javax.swing.JFrame {
     /**
      * Creates new form buscarCoches
      */
-    Consultas obxConsultas = new Consultas();
+
     DefaultTableModel tabla;
 
     public BuscarCoches() {
@@ -139,14 +139,20 @@ public class BuscarCoches extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * boton para volver a la ventana principal 
+ * @param evt 
+ */
     private void bVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bVolverMouseClicked
         // TODO add your handling code here:
         Principal principal = new Principal();
         principal.setVisible(true);
         dispose();
     }//GEN-LAST:event_bVolverMouseClicked
-
+/**
+ * metodo para enviar el campo por el cual buscar un dato al controlador, y refrescar la tabla con las coincidencias
+ * @param evt 
+ */
     private void bBuscarMarcaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBuscarMarcaMouseClicked
         // TODO add your handling code here:
         Controlador.buscar(buscarMarca.getText());

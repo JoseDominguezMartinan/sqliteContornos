@@ -20,10 +20,8 @@ public class ProxectoSqlite
     public static void main(String[] args)
     {
         // TODO code application logic here
-        Consultas obxConsultas=new Consultas();
-        obxConsultas.connect();
-        obxConsultas.crearTabla();
-        Principal ventana=new Principal();
+        Consultas.crearTabla(); // en caso de no existir la tabla en cuestion este metodo la genera, en caso de existir no hace nada 
+        Principal ventana=new Principal(); // abrimos la ventana del menu principal 
         
     }
     

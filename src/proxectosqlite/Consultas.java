@@ -6,23 +6,20 @@
 package proxectosqlite;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * clase modelo, clase con todos os metodos relacionados coa base de datos 
  * @author jdominguezmartinan
  */
 public class Consultas
 {
 
-    private final String url = "C:\\Users\\jose\\Documents\\NetBeansProjects\\sqliteContornos\\coches.db"; // ruta donde va a estar almacenada la base de datos , en caso de no existir la crea
-    private Connection connect; // objeto de tipo connection, proporciona metodos para manexar a base de datos
-    private PreparedStatement st; // objeto de tipo PreparedStatement, usado para enviar sentenzas sql a base de datos
-    private ResultSet datos; // para traballar coa fila actual da taboa 
-    private int resultado; // para devolver si se ha ejecutado la operacion con exito o no 
+    private static final String url = "C:\\Users\\jose\\Documents\\NetBeansProjects\\sqliteContornos\\coches.db"; // ruta donde va a estar almacenada la base de datos , en caso de no existir la crea
+    private static Connection connect; // objeto de tipo connection, proporciona metodos para manexar a base de datos
+    private static PreparedStatement st; // objeto de tipo PreparedStatement, usado para enviar sentenzas sql a base de datos
+    private static ResultSet datos; // para traballar coa fila actual da taboa 
+    private static int resultado; // para devolver si se ha ejecutado la operacion con exito o no 
 
     /**
      * unha vez conectados a base de datos , pode ser que a taboa da que estamos
@@ -30,7 +27,7 @@ public class Consultas
      * NetBeans o que fixen foi crear este mmetodo que crea a tabla en caso de
      * que non exista
      */
-    public void crearTabla()
+    public static void crearTabla()
     {
         connect();
         try
@@ -47,7 +44,7 @@ public class Consultas
     /**
      * metodo para conectase a base de datos
      */
-    public void connect()
+    public static void connect()
     {
         try
         { // lanzamos una excepcion en caso de non poder conectarse a  base de datos 
@@ -66,7 +63,7 @@ public class Consultas
     /**
      * metodo para cerrar a conexion coa base de datos
      */
-    public void close()
+    public static void close()
     {
         try
         {
@@ -86,7 +83,7 @@ public class Consultas
      *
      * @param coche obxeto de tipo coches que queremos insertar na base de datos
      */
-    public void insertarCoches(Coches coche)
+    public static void insertarCoches(Coches coche)
     {
         connect();
         try
@@ -111,7 +108,7 @@ public class Consultas
      * co que buscamos
      * @return datos result set con los datos de la busqueda 
      */
-    public ResultSet buscarCoches(String parametroBusqueda)
+    public static ResultSet buscarCoches(String parametroBusqueda)
     {
         connect();
         try
@@ -129,12 +126,11 @@ public class Consultas
     }
 
     /**
-     * metodo para que no array aparezan todos os coches que se atopan na base
-     * de datos
+     * metodo para consultar todos los datos de la tabla coches 
      *
      * @return datos result set con los datos de la busqueda
      */
-    public ResultSet insertarTodosLista()
+    public static ResultSet consultarTodos()
     {
         connect(); // conectamos con la base de datos 
         try
@@ -156,13 +152,13 @@ public class Consultas
      *
      * @param coche obxeto coche que queremos borrar da lista
      */
-    public int borrarCoches(Coches coche)
+    public static int borrarCoches(Coches coche)
     {
         connect(); // conectamonos como en cada operacion a base de datos 
         try
         {
             st = connect.prepareStatement("delete from coches where id='"+coche.getId()+"'");// enviamos a sentenza sql a base de datos 
-            resultado=st.executeUpdate();
+            resultado=st.executeUpdate(); // executamos a sentenza e devolvemos o result set
         } catch(SQLException ex)
         { // en caso de erro capturamos a excepcion co seguinte mensaxe de erro
             System.out.println("Error ao eliminar ao vehiculo, intenteo de novo ");
@@ -176,7 +172,7 @@ public class Consultas
      *
      * @param cocheUpdate obxeto que vamos a actualizar os datos
      */
-    public void actualizarCoche(Coches cocheUpdate)
+    public static void actualizarCoche(Coches cocheUpdate)
     {
         connect(); // realizamos a conexion coa base de datos 
         try

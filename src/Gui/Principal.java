@@ -126,7 +126,10 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * abre la ventana insertar coches y cierra la actual 
+ * @param evt 
+ */
     private void bInsertarMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_bInsertarMouseClicked
     {//GEN-HEADEREND:event_bInsertarMouseClicked
         // TODO add your handling code here:
@@ -134,25 +137,37 @@ public class Principal extends javax.swing.JFrame {
         insertar.setVisible(true);
         dispose();
     }//GEN-LAST:event_bInsertarMouseClicked
-
+/**
+ * abre la ventana buscar coches y cierra la actual 
+ * @param evt 
+ */
     private void bBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBuscarMouseClicked
         // TODO add your handling code here:
         BuscarCoches buscar = new BuscarCoches();
         buscar.setVisible(true);
         dispose();
     }//GEN-LAST:event_bBuscarMouseClicked
-
+/**
+ *
+ * @param evt 
+ */
     private void bBorrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bBorrarKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_bBorrarKeyPressed
-
+/**
+ * abre la ventana borrar coches y cierra la actual 
+ * @param evt 
+ */
     private void bBorrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bBorrarMouseClicked
         // TODO add your handling code here:
         BorrarCoches borrar = new BorrarCoches();
         borrar.setVisible(true);
         dispose();
     }//GEN-LAST:event_bBorrarMouseClicked
-
+/**
+ * abre la ventana actualizar coches y cierra la actual 
+ * @param evt 
+ */
     private void bActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bActualizarMouseClicked
         // TODO add your handling code here:
         ActualizarCoches actualizar = new ActualizarCoches();

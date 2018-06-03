@@ -194,7 +194,10 @@ public class InsertarCoches extends javax.swing.JFrame {
         insertarModelo.setText("");
         insertarMotor.setText("");
     }//GEN-LAST:event_bLimparMouseClicked
-
+/**
+ * recoge los datos que pedimos al usuario y se lo envia al controlador para ser insertados en la base de datos despues 
+ * @param evt 
+ */
     private void bOkMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_bOkMouseClicked
     {//GEN-HEADEREND:event_bOkMouseClicked
         // TODO add your handling code here:
@@ -214,7 +217,10 @@ public class InsertarCoches extends javax.swing.JFrame {
     private void bLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLimparActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bLimparActionPerformed
-
+/**
+ * boton para volver a la ventana principal del proyecto
+ * @param evt 
+ */
     private void bVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bVolverMouseClicked
         // TODO add your handling code here:
         Principal principal = new Principal();

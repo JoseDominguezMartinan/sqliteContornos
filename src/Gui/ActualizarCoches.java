@@ -146,14 +146,20 @@ public class ActualizarCoches extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 
-    
+    /**
+     * boton para volver a la ventana principal de la aplicacion 
+     * @param evt 
+     */
     private void bVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bVolverMouseClicked
         // TODO add your handling code here:
         Principal principal = new Principal();
         principal.setVisible(true);
         dispose();
     }//GEN-LAST:event_bVolverMouseClicked
-
+/**
+ * metdo que al pulsar el boton actualizar recoge los datos de la fila seleccionada en un array , que se lo envia al controlador para su procesamiento 
+ * @param evt 
+ */
     private void bActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bActualizarMouseClicked
         // TODO add your handling code here:
    

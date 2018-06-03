@@ -2,6 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/jose/Documents/NetBeansProjects/sqliteContornos/src/Gui/BuscarCoches.java</file>
+            <file>file:/C:/Users/jose/Documents/NetBeansProjects/sqliteContornos/src/proxectosqlite/Controlador.java</file>
+            <file>file:/C:/Users/jose/Documents/NetBeansProjects/sqliteContornos/src/proxectosqlite/ProxectoSqlite.java</file>
+            <file>file:/C:/Users/jose/Documents/NetBeansProjects/sqliteContornos/src/proxectosqlite/Coches.java</file>
+            <file>file:/C:/Users/jose/Documents/NetBeansProjects/sqliteContornos/src/Gui/BorrarCoches.java</file>
+            <file>file:/C:/Users/jose/Documents/NetBeansProjects/sqliteContornos/src/Gui/InsertarCoches.java</file>
+            <file>file:/C:/Users/jose/Documents/NetBeansProjects/sqliteContornos/src/Gui/ActualizarCoches.java</file>
+            <file>file:/C:/Users/jose/Documents/NetBeansProjects/sqliteContornos/src/proxectosqlite/Consultas.java</file>
+        </group>
     </open-files>
 </project-private>
